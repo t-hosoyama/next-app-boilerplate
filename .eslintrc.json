@@ -1,3 +1,16 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["eslint:recommended", "next/core-web-vitals", "prettier"],
+  "plugins": ["simple-import-sort", "unused-imports"],
+  "rules": {
+    // SSGの場合は画像の最適化機能が利用できないためオプトアウト
+    "@next/next/no-img-element": "off",
+    // 空の関数宣言は警告する（コード中で eslint-disable するかコメントを書けば回避可能）
+    "no-empty-function": "warn",
+    // eslint-plugin-simple-import-sort の設定を有効にする
+    "sort-imports": "off",
+    "simple-import-sort/imports": "warn",
+    "simple-import-sort/exports": "warn",
+    // eslint-plugin-unused-imports の設定を有効にする
+    "unused-imports/no-unused-imports-ts": "warn"
+  }
 }
