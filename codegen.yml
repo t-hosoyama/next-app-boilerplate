@@ -1,0 +1,17 @@
+overwrite: true
+schema: 'http://localhost:8080/v1/graphql'
+documents: './src/**/*.gql'
+generates:
+  src/types/graphql.ts:
+    - typescript
+  src/:
+    preset: near-operation-file
+    presetConfig:
+      baseTypesPath: types/graphql.ts
+    plugins:
+      - 'typescript-operations'
+      - 'typescript-react-apollo'
+    config:
+      fetcher: fetch
+      scalars:
+        timestamptz: Date
