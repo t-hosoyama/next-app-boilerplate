@@ -1,6 +1,6 @@
 {
   "extends": ["eslint:recommended", "next/core-web-vitals", "prettier"],
-  "plugins": ["simple-import-sort", "unused-imports"],
+  "plugins": ["simple-import-sort", "unused-imports", "react-hooks"],
   "rules": {
     // SSGの場合は画像の最適化機能が利用できないためオプトアウト
     "@next/next/no-img-element": "off",
@@ -11,6 +11,14 @@
     "simple-import-sort/imports": "warn",
     "simple-import-sort/exports": "warn",
     // eslint-plugin-unused-imports の設定を有効にする
-    "unused-imports/no-unused-imports-ts": "warn"
+    "unused-imports/no-unused-imports-ts": "warn",
+    // recoilの推奨設定
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": [
+      "warn",
+      {
+        "additionalHooks": "(useRecoilCallback|useRecoilTransaction_UNSTABLE)"
+      }
+    ]
   }
 }
