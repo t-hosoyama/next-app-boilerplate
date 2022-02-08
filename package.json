@@ -5,7 +5,8 @@
     "dev": "next dev",
     "build": "next build && next export",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "next lint && prettier -c src",
+    "format": "next lint --fix && prettier -w --loglevel=warn src",
     "generate": "graphql-codegen"
   },
   "dependencies": {
