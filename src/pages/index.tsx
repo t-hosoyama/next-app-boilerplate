@@ -43,6 +43,12 @@ const Home: NextPage = () => {
               <p>This is GraphQL example page link.</p>
             </a>
           </Link>
+          <Link href="/examples/calendar/">
+            <a className={styles.card}>
+              <h2>Calendar example &rarr;</h2>
+              <p>This is Calendar example page link.</p>
+            </a>
+          </Link>
         </div>
       </main>
 
