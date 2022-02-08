@@ -1,2 +1,20 @@
-src/types/graphql.ts
-src/graphql/*.generated.ts
+# dependencies
+/node_modules/
+
+# testing
+/coverage/
+
+# next.js
+/.next/
+/out/
+
+# vscode
+/.vscode/
+
+# misc
+*.md
+package.lock.json
+
+# src
+/src/types/graphql.ts
+/src/graphql/*.generated.ts
