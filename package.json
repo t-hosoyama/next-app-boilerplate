@@ -8,7 +8,9 @@
     "lint": "next lint && prettier -c src",
     "format": "next lint --fix && prettier -w --loglevel=warn src",
     "generate": "graphql-codegen",
-    "test": "jest"
+    "test": "jest",
+    "typecheck": "tsc --noEmit",
+    "ci": "npm run typecheck && npm run lint && npm run test"
   },
   "dependencies": {
     "@apollo/client": "^3.5.8",
