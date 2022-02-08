@@ -1,10 +1,10 @@
 import 'react-calendar/dist/Calendar.css'
 
-import type { NextPage } from 'next'
 import { css } from '@emotion/css'
+import type { NextPage } from 'next'
+import Link from 'next/link'
 import { useState } from 'react'
 import Calendar, { CalendarTileProperties } from 'react-calendar'
-import Link from 'next/link'
 
 const ReactCalendar: NextPage = () => {
   const [value, onChange] = useState(new Date())
