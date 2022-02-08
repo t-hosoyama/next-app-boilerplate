@@ -7,7 +7,8 @@
     "start": "next start",
     "lint": "next lint && prettier -c src",
     "format": "next lint --fix && prettier -w --loglevel=warn src",
-    "generate": "graphql-codegen"
+    "generate": "graphql-codegen",
+    "test": "jest"
   },
   "dependencies": {
     "@apollo/client": "^3.5.8",
