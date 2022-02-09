@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "apollographql.vscode-apollo",
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
+    "orta.vscode-jest",
+    "esbenp.prettier-vscode",
+    "mskelton.react-emotion-snippets",
+    "visualstudioexptteam.vscodeintellicode",
+    "styled-components.vscode-styled-components"
+  ]
+}
