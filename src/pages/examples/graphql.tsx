@@ -1,4 +1,5 @@
 import { css } from '@emotion/css'
+import dayjs from 'dayjs'
 import Link from 'next/link'
 import React from 'react'
 
@@ -44,7 +45,7 @@ const GraphQLExample: React.FC = () => {
       {data?.users.map(({ id, name, birthday }) => (
         <ul key={id}>
           <li>
-            {id}: {name} {birthday}
+            {id}: {name} {dayjs(birthday).format('YYYY/M/D')}
           </li>
         </ul>
       ))}
