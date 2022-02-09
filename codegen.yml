@@ -3,7 +3,11 @@ schema: 'http://localhost:8080/v1/graphql'
 documents: './src/**/*.gql'
 generates:
   src/types/graphql.ts:
-    - typescript
+    plugins:
+      - typescript
+    config:
+      scalars:
+        timestamptz: Date
   src/:
     preset: near-operation-file
     presetConfig:
@@ -13,5 +17,3 @@ generates:
       - 'typescript-react-apollo'
     config:
       fetcher: fetch
-      scalars:
-        timestamptz: Date
