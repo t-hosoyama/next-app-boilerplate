@@ -6,7 +6,7 @@ const defaultOptions = {} as const;
 export type UsersQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
-export type UsersQuery = { __typename?: 'query_root', users: Array<{ __typename?: 'users', id: number, name: string, birthday: Date }> };
+export type UsersQuery = { __typename?: 'query_root', users: Array<{ __typename?: 'users', id: number, name: string, birthday: any }> };
 
 
 export const UsersDocument = gql`
