@@ -1,10 +1,11 @@
-import { css } from '@emotion/css'
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
 import React from 'react'
 import ReactCalendar, { CalendarProps } from 'react-calendar'
 
 export const Calendar: React.FC<CalendarProps> = (props) => {
   return (
-    <div className={cssCalendar}>
+    <div css={cssCalendar}>
       <ReactCalendar {...props} />
     </div>
   )

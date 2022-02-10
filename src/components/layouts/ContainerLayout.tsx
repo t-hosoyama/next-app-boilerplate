@@ -1,4 +1,5 @@
-import { css } from '@emotion/css'
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
 import Link from 'next/link'
 import React from 'react'
 
@@ -15,17 +16,17 @@ export const ContainerLayout: React.FC<ContainerProps> = ({
 }) => {
   return (
     <div
-      className={css`
+      css={css`
         margin: 2rem;
       `}
     >
       {backLinkUrl && (
         <Link href={backLinkUrl} passHref>
-          <a className={cssBackLink}>&larr; back</a>
+          <a css={cssBackLink}>&larr; back</a>
         </Link>
       )}
 
-      <h1 className={cssTitle}>{title}</h1>
+      <h1 css={cssTitle}>{title}</h1>
 
       {children}
     </div>

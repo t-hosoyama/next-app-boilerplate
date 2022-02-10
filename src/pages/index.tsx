@@ -1,4 +1,5 @@
-import { css } from '@emotion/css'
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
@@ -6,7 +7,7 @@ import Link from 'next/link'
 const Home: NextPage = () => {
   return (
     <div
-      className={css`
+      css={css`
         padding: 0 2rem;
       `}
     >
@@ -17,7 +18,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main
-        className={css`
+        css={css`
           min-height: 100vh;
           padding: 4rem 0;
           flex: 1;
@@ -28,7 +29,7 @@ const Home: NextPage = () => {
         `}
       >
         <h1
-          className={css`
+          css={css`
             margin: 0;
             line-height: 1.15;
             font-size: 4rem;
@@ -48,7 +49,7 @@ const Home: NextPage = () => {
         </h1>
 
         <p
-          className={css`
+          css={css`
             margin: 4rem 0;
             line-height: 1.5;
             font-size: 1.5rem;
@@ -57,7 +58,7 @@ const Home: NextPage = () => {
         >
           Get started by editing
           <code
-            className={css`
+            css={css`
               background: #fafafa;
               border-radius: 5px;
               padding: 0.75rem;
@@ -71,7 +72,7 @@ const Home: NextPage = () => {
         </p>
 
         <div
-          className={css`
+          css={css`
             display: flex;
             align-items: center;
             justify-content: center;
@@ -84,42 +85,42 @@ const Home: NextPage = () => {
           `}
         >
           <Link href="/examples/emotion/">
-            <a className={cssCard}>
+            <a css={cssCard}>
               <h2>Emotion example &rarr;</h2>
               <p>This is emotion example page link.</p>
             </a>
           </Link>
 
           <Link href="/examples/recoil/">
-            <a className={cssCard}>
+            <a css={cssCard}>
               <h2>Recoil example &rarr;</h2>
               <p>This is recoil example page link.</p>
             </a>
           </Link>
 
           <Link href="/examples/graphql/">
-            <a className={cssCard}>
+            <a css={cssCard}>
               <h2>GraphQL example &rarr;</h2>
               <p>This is GraphQL example page link.</p>
             </a>
           </Link>
 
           <Link href="/examples/calendar/">
-            <a className={cssCard}>
+            <a css={cssCard}>
               <h2>Calendar example &rarr;</h2>
               <p>This is Calendar example page link.</p>
             </a>
           </Link>
 
           <Link href="/404/">
-            <a className={cssCard}>
+            <a css={cssCard}>
               <h2>404 example &rarr;</h2>
               <p>This is 404 example page link.</p>
             </a>
           </Link>
 
           <Link href="/examples/error/">
-            <a className={cssCard}>
+            <a css={cssCard}>
               <h2>Error example &rarr;</h2>
               <p>This is Error example page link.</p>
             </a>
@@ -128,7 +129,7 @@ const Home: NextPage = () => {
       </main>
 
       <footer
-        className={css`
+        css={css`
           display: flex;
           flex: 1;
           padding: 2rem 0;
@@ -150,7 +151,7 @@ const Home: NextPage = () => {
         >
           Powered by{' '}
           <span
-            className={css`
+            css={css`
               height: 1em;
               margin-left: 0.5rem;
             `}

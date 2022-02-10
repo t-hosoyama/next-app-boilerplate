@@ -1,4 +1,5 @@
-import { css } from '@emotion/css'
+/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react'
 import React from 'react'
 
 import { ContainerLayout } from '~/components/layouts/ContainerLayout'
@@ -16,7 +17,7 @@ export const EmotionContainer: React.FC = () => {
 
   return (
     <ContainerLayout title="Emotion example">
-      <div className={cssExampleButton(buttonColors)}>Hover to change color.</div>
+      <div css={cssExampleButton(buttonColors)}>Hover to change color.</div>
     </ContainerLayout>
   )
 }
