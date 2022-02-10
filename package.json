@@ -4,14 +4,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export",
-    "start": "next start",
     "lint": "next lint && prettier -c src",
     "format": "next lint --fix && prettier -w --loglevel=warn src",
     "generate": "graphql-codegen",
     "test": "jest",
     "typecheck": "tsc --noEmit",
-    "ci": "npm run typecheck && npm run lint && npm run test",
-    "local": "npm run build && http-server -p 3000 out"
+    "serve": "http-server -p 3000 out",
+    "start": "npm run build && npm run serve",
+    "ci": "npm run typecheck && npm run lint && npm run test"
   },
   "dependencies": {
     "@apollo/client": "^3.5.8",
