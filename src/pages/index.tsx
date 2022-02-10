@@ -103,10 +103,25 @@ const Home: NextPage = () => {
               <p>This is GraphQL example page link.</p>
             </a>
           </Link>
+
           <Link href="/examples/calendar/">
             <a className={cssCard}>
               <h2>Calendar example &rarr;</h2>
               <p>This is Calendar example page link.</p>
+            </a>
+          </Link>
+
+          <Link href="/404/">
+            <a className={cssCard}>
+              <h2>404 example &rarr;</h2>
+              <p>This is 404 example page link.</p>
+            </a>
+          </Link>
+
+          <Link href="/examples/error/">
+            <a className={cssCard}>
+              <h2>Error example &rarr;</h2>
+              <p>This is Error example page link.</p>
             </a>
           </Link>
         </div>
