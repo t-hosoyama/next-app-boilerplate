@@ -5,18 +5,25 @@ import React from 'react'
 type ContainerProps = {
   title: string
   children: React.ReactNode
+  backLinkUrl?: string | null
 }
 
-export const ContainerLayout: React.FC<ContainerProps> = ({ title, children }) => {
+export const ContainerLayout: React.FC<ContainerProps> = ({
+  title,
+  children,
+  backLinkUrl = '/',
+}) => {
   return (
     <div
       className={css`
         margin: 2rem;
       `}
     >
-      <Link href="/" passHref>
-        <a className={cssBackLink}>&larr; back</a>
-      </Link>
+      {backLinkUrl && (
+        <Link href={backLinkUrl} passHref>
+          <a className={cssBackLink}>&larr; back</a>
+        </Link>
+      )}
 
       <h1 className={cssTitle}>{title}</h1>
 
