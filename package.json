@@ -15,7 +15,9 @@
   "dependencies": {
     "@apollo/client": "^3.5.8",
     "@emotion/css": "^11.7.1",
+    "@emotion/react": "^11.7.1",
     "dayjs": "^1.10.7",
+    "emotion-reset": "^3.0.1",
     "next": "12.0.10",
     "react": "17.0.2",
     "react-calendar": "^3.7.0",
