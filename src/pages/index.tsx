@@ -125,6 +125,13 @@ const Home: NextPage = () => {
               <p>This is Error example page link.</p>
             </a>
           </Link>
+
+          <Link href="/brand1/">
+            <a css={cssCard}>
+              <h2>Dynamic routing example &rarr;</h2>
+              <p>This is Dynamic routing example page link.</p>
+            </a>
+          </Link>
         </div>
       </main>
 
