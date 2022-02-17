@@ -44,7 +44,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: '#/components/schemas/UsersError'
 components:
   schemas:
     User:
@@ -64,7 +64,7 @@ components:
           type: 'string'
           format: 'date-time'
           example: '1971-01-01T00:00:00Z'
-    Error:
+    UsersError:
       type: 'object'
       required:
         - 'code'
