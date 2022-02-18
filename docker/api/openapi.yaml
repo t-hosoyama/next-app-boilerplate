@@ -13,16 +13,9 @@ paths:
       description: >
         Returns all users
       operationId: findUsers
+      tags:
+        - users
       parameters:
-        - name: tags
-          in: query
-          description: tags to filter by
-          required: false
-          style: form
-          schema:
-            type: array
-            items:
-              type: string
         - name: limit
           in: query
           description: maximum number of results to return
@@ -36,15 +29,77 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/User'
+                $ref: '#/components/schemas/Users'
         default:
           description: unexpected error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/UsersError'
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create a user
+      operationId: createUser
+      tags:
+        - users
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - 'name'
+                - 'birthday'
+              properties:
+                name:
+                  type: string
+                  example: 'newbie'
+                birthday:
+                  type: string
+                  format: 'date-time'
+                  example: '1971-01-01T00:00:00Z'
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '201':
+          description: Null response
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /users/{userId}:
+    get:
+      summary: Info for a specific user
+      operationId: findUserById
+      tags:
+        - users
+      parameters:
+        - name: userId
+          in: path
+          required: true
+          description: The id of the user to retrieve
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Expected response to a valid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        default:
+          description: unexpected error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     User:
@@ -56,7 +111,7 @@ components:
         id:
           type: 'integer'
           format: 'int64'
-          example: 100
+          example: 1
         name:
           type: 'string'
           example: 'Taro'
@@ -64,7 +119,11 @@ components:
           type: 'string'
           format: 'date-time'
           example: '1971-01-01T00:00:00Z'
-    UsersError:
+    Users:
+      type: array
+      items:
+        $ref: '#/components/schemas/User'
+    Error:
       type: 'object'
       required:
         - 'code'
@@ -77,6 +136,3 @@ components:
         message:
           type: 'string'
           example: ' unexpected error'
-externalDocs:
-  description: 'Find out more about Swagger'
-  url: 'http://swagger.io'
