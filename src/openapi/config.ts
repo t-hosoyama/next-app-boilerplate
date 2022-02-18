@@ -18,12 +18,14 @@ export const customInstance = async <T>({
   const signal = controller.signal
   const token = globalThis.localStorage?.getItem('token')
 
-  const headers =
-    token !== null
-      ? {
-          authorization: `Bearer ${token}`,
-        }
-      : undefined
+  // eslint-disable-next-line no-undef
+  const headers: HeadersInit = {
+    'Content-Type': 'application/json',
+  }
+
+  if (token !== null) {
+    headers.authorization = `Bearer ${token}`
+  }
 
   const response = await fetch(`${baseURL}${url}${new URLSearchParams(params)}`, {
     method,
