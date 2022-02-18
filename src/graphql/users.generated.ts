@@ -1,47 +1,77 @@
-import * as Types from '../types/graphql';
+import * as Types from './types.generated';
 
-import { gql } from '@apollo/client';
-import * as Apollo from '@apollo/client';
-const defaultOptions = {} as const;
+import { useQuery, UseQueryOptions, useMutation, UseMutationOptions } from 'react-query';
+import { fetcher } from './config';
+export type UserFieldsFragment = { __typename?: 'users', id: number, name: string, birthday: any };
+
 export type UsersQueryVariables = Types.Exact<{ [key: string]: never; }>;
 
 
 export type UsersQuery = { __typename?: 'query_root', users: Array<{ __typename?: 'users', id: number, name: string, birthday: any }> };
 
+export type SubscribeUsersSubscriptionVariables = Types.Exact<{ [key: string]: never; }>;
 
-export const UsersDocument = gql`
-    query Users {
+
+export type SubscribeUsersSubscription = { __typename?: 'subscription_root', users: Array<{ __typename?: 'users', id: number, name: string, birthday: any }> };
+
+export type CreateUserMutationVariables = Types.Exact<{
+  name?: Types.InputMaybe<Types.Scalars['String']>;
+  birthday?: Types.InputMaybe<Types.Scalars['timestamptz']>;
+}>;
+
+
+export type CreateUserMutation = { __typename?: 'mutation_root', insert_users?: { __typename?: 'users_mutation_response', affected_rows: number } | null };
+
+export const UserFieldsFragmentDoc = `
+    fragment UserFields on users {
+  id
+  name
+  birthday
+}
+    `;
+export const UsersDocument = `
+    query users {
   users {
-    id
-    name
-    birthday
+    ...UserFields
+  }
+}
+    ${UserFieldsFragmentDoc}`;
+export const useUsersQuery = <
+      TData = UsersQuery,
+      TError = unknown
+    >(
+      variables?: UsersQueryVariables,
+      options?: UseQueryOptions<UsersQuery, TError, TData>
+    ) =>
+    useQuery<UsersQuery, TError, TData>(
+      variables === undefined ? ['users'] : ['users', variables],
+      fetcher<UsersQuery, UsersQueryVariables>(UsersDocument, variables),
+      options
+    );
+
+useUsersQuery.getKey = (variables?: UsersQueryVariables) => variables === undefined ? ['users'] : ['users', variables];
+;
+
+export const SubscribeUsersDocument = `
+    subscription subscribeUsers {
+  users {
+    ...UserFields
+  }
+}
+    ${UserFieldsFragmentDoc}`;
+export const CreateUserDocument = `
+    mutation createUser($name: String, $birthday: timestamptz) {
+  insert_users(objects: [{name: $name, birthday: $birthday}]) {
+    affected_rows
   }
 }
     `;
-
-/**
- * __useUsersQuery__
- *
- * To run a query within a React component, call `useUsersQuery` and pass it any options that fit your needs.
- * When your component renders, `useUsersQuery` returns an object from Apollo Client that contains loading, error, and data properties
- * you can use to render your UI.
- *
- * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
- *
- * @example
- * const { data, loading, error } = useUsersQuery({
- *   variables: {
- *   },
- * });
- */
-export function useUsersQuery(baseOptions?: Apollo.QueryHookOptions<UsersQuery, UsersQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<UsersQuery, UsersQueryVariables>(UsersDocument, options);
-      }
-export function useUsersLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<UsersQuery, UsersQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<UsersQuery, UsersQueryVariables>(UsersDocument, options);
-        }
-export type UsersQueryHookResult = ReturnType<typeof useUsersQuery>;
-export type UsersLazyQueryHookResult = ReturnType<typeof useUsersLazyQuery>;
-export type UsersQueryResult = Apollo.QueryResult<UsersQuery, UsersQueryVariables>;
+export const useCreateUserMutation = <
+      TError = unknown,
+      TContext = unknown
+    >(options?: UseMutationOptions<CreateUserMutation, TError, CreateUserMutationVariables, TContext>) =>
+    useMutation<CreateUserMutation, TError, CreateUserMutationVariables, TContext>(
+      ['createUser'],
+      (variables?: CreateUserMutationVariables) => fetcher<CreateUserMutation, CreateUserMutationVariables>(CreateUserDocument, variables)(),
+      options
+    );

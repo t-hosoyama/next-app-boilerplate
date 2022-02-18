@@ -213,13 +213,7 @@ export type Timestamptz_Comparison_Exp = {
   _nin?: InputMaybe<Array<Scalars['timestamptz']>>;
 };
 
-/**
- * user
- *
- *
- * columns and relationships of "users"
- *
- */
+/** columns and relationships of "users" */
 export type Users = {
   __typename?: 'users';
   birthday: Scalars['timestamptz'];
@@ -276,7 +270,7 @@ export type Users_Bool_Exp = {
 /** unique or primary key constraints on table "users" */
 export enum Users_Constraint {
   /** unique or primary key constraint */
-  UserPkey = 'user_pkey'
+  UsersPkey = 'users_pkey'
 }
 
 /** input type for incrementing numeric columns in table "users" */

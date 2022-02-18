@@ -1,7 +1,23 @@
-query Users {
+fragment UserFields on users {
+  id
+  name
+  birthday
+}
+
+query users {
   users {
-    id
-    name
-    birthday
+    ...UserFields
+  }
+}
+
+subscription subscribeUsers {
+  users {
+    ...UserFields
+  }
+}
+
+mutation createUser($name: String, $birthday: timestamptz) {
+  insert_users(objects: [{ name: $name, birthday: $birthday }]) {
+    affected_rows
   }
 }
