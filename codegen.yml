@@ -2,7 +2,7 @@ overwrite: true
 schema: 'http://localhost:8080/v1/graphql'
 documents: './src/**/*.gql'
 generates:
-  src/types/graphql.ts:
+  src/graphql/types.generated.ts:
     plugins:
       - typescript
     config:
@@ -11,9 +11,11 @@ generates:
   src/:
     preset: near-operation-file
     presetConfig:
-      baseTypesPath: types/graphql.ts
+      baseTypesPath: graphql/types.generated.ts
     plugins:
       - 'typescript-operations'
-      - 'typescript-react-apollo'
+      - 'typescript-react-query'
     config:
-      fetcher: fetch
+      fetcher: './config#fetcher'
+      isReactHook: true
+      exposeQueryKeys: true
