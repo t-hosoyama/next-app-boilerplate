@@ -16,7 +16,6 @@
     "generate": "npm run graphql-codegen && npm run orval"
   },
   "dependencies": {
-    "@apollo/client": "^3.5.8",
     "@emotion/react": "^11.7.1",
     "dayjs": "^1.10.7",
     "emotion-reset": "^3.0.1",
@@ -35,7 +34,6 @@
     "@graphql-codegen/near-operation-file-preset": "^2.2.4",
     "@graphql-codegen/typescript": "^2.4.3",
     "@graphql-codegen/typescript-operations": "^2.2.4",
-    "@graphql-codegen/typescript-react-apollo": "^3.2.5",
     "@graphql-codegen/typescript-react-query": "^3.5.4",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
