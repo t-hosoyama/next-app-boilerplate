@@ -132,6 +132,13 @@ const Home: NextPage = () => {
               <p>This is Dynamic routing example page link.</p>
             </a>
           </Link>
+
+          <Link href="/examples/openapi/">
+            <a css={cssCard}>
+              <h2>OpenAPI example &rarr;</h2>
+              <p>This is OpenAPI example page link.</p>
+            </a>
+          </Link>
         </div>
       </main>
 
