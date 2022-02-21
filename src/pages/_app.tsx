@@ -1,9 +1,10 @@
+import { ThemeProvider } from '@emotion/react'
 import type { AppProps } from 'next/app'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { RecoilRoot } from 'recoil'
 
 import { ErrorBoundary } from '~/components/utils/ErrorBoundary'
-import { GlobalStyle } from '~/components/utils/GlobalStyle'
+import { GlobalStyle, theme } from '~/components/utils/GlobalStyle'
 import { LoadingSpinner } from '~/components/utils/LoadingSpinner'
 import { ErrorContainer } from '~/containers/ErrorContainer'
 
@@ -19,15 +20,17 @@ const queryClient = new QueryClient({
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ErrorBoundary fallback={<ErrorContainer />}>
-      <QueryClientProvider client={queryClient}>
-        <RecoilRoot>
-          <GlobalStyle />
-          <Component {...pageProps} />
-          <LoadingSpinner />
-        </RecoilRoot>
-      </QueryClientProvider>
-    </ErrorBoundary>
+    <ThemeProvider theme={theme}>
+      <ErrorBoundary fallback={<ErrorContainer />}>
+        <QueryClientProvider client={queryClient}>
+          <RecoilRoot>
+            <GlobalStyle />
+            <Component {...pageProps} />
+            <LoadingSpinner />
+          </RecoilRoot>
+        </QueryClientProvider>
+      </ErrorBoundary>
+    </ThemeProvider>
   )
 }
 

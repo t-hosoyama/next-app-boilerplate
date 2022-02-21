@@ -1,3 +1,4 @@
+import type { Theme } from '@emotion/react'
 import { css, Global } from '@emotion/react'
 import emotionReset from 'emotion-reset'
 import React from 'react'
@@ -25,4 +26,11 @@ export const GlobalStyle: React.FC = () => {
       `}
     />
   )
+}
+
+export const theme: Theme = {
+  colors: {
+    primary: 'hotpink',
+    secondary: 'white',
+  },
 }
