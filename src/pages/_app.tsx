@@ -4,6 +4,7 @@ import { RecoilRoot } from 'recoil'
 
 import { ErrorBoundary } from '~/components/utils/ErrorBoundary'
 import { GlobalStyle } from '~/components/utils/GlobalStyle'
+import { LoadingSpinner } from '~/components/utils/LoadingSpinner'
 import { ErrorContainer } from '~/containers/ErrorContainer'
 
 const queryClient = new QueryClient({
@@ -23,6 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <RecoilRoot>
           <GlobalStyle />
           <Component {...pageProps} />
+          <LoadingSpinner />
         </RecoilRoot>
       </QueryClientProvider>
     </ErrorBoundary>

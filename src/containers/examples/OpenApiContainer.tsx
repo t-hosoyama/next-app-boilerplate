@@ -5,6 +5,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 
 import { ContainerLayout } from '~/components/layouts/ContainerLayout'
+import { useSetLoadingSpinner } from '~/hooks/useLoadingSpinner'
 import { useCreateUser, useFindUsers } from '~/openapi/generated/users'
 
 type UserForm = {
@@ -19,6 +20,7 @@ export const OpenApiContainer: React.FC = () => {
       onSuccess: () => refetch(),
     },
   })
+  useSetLoadingSpinner([isLoading, mutation.isLoading])
 
   const {
     register,

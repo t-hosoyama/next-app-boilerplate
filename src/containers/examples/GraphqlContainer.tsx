@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 
 import { ContainerLayout } from '~/components/layouts/ContainerLayout'
 import { useCreateUserMutation, useUsersQuery } from '~/graphql/users.generated'
+import { useSetLoadingSpinner } from '~/hooks/useLoadingSpinner'
 
 type UserForm = {
   name: string
@@ -17,6 +18,8 @@ export const GraphQLContainer: React.FC = () => {
   const mutation = useCreateUserMutation({
     onSuccess: () => refetch(),
   })
+  useSetLoadingSpinner([isLoading, mutation.isLoading])
+
   const {
     register,
     handleSubmit,
