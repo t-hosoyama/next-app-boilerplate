@@ -8,7 +8,7 @@ declare module '@emotion/react' {
   }
 }
 
-interface Colors = {
+interface Colors {
   primary: string
   secondary: string
 }
